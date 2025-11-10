@@ -193,18 +193,12 @@ const Fichas = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="bombona">Bombona *</Label>
-                    <Select value={formData.bombona_id} onValueChange={(value) => setFormData({ ...formData, bombona_id: value })}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecione uma bombona" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {bombonas.map((bombona) => (
-                          <SelectItem key={bombona.id} value={bombona.id}>
-                            {bombona.codigo}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <Input
+                      id="bombona"
+                      value={formData.bombona_id}
+                      onChange={(e) => setFormData({ ...formData, bombona_id: e.target.value })}
+                      required
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="tipo">Tipo de Movimentação</Label>
@@ -259,6 +253,7 @@ const Fichas = () => {
                 <div className="space-y-4">
                   <SignaturePad onSave={(dataUrl) => {
                     setSignatureData(dataUrl);
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     handleSubmit(new Event("submit") as any);
                   }} />
                 </div>
