@@ -1,7 +1,7 @@
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Package, FileText, Users, LogOut, ClipboardList } from "lucide-react";
+import { Package, FileText, Users, LogOut, ClipboardList, UserCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -69,10 +69,16 @@ const Dashboard = () => {
               {userRole && <span className="ml-2 text-primary font-medium">({userRole})</span>}
             </p>
           </div>
-          <Button variant="outline" onClick={signOut}>
-            <LogOut className="w-4 h-4 mr-2" />
-            Sair
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => navigate("/perfil")}>
+              <UserCircle className="w-4 h-4 mr-2" />
+              Perfil
+            </Button>
+            <Button variant="outline" onClick={signOut}>
+              <LogOut className="w-4 h-4 mr-2" />
+              Sair
+            </Button>
+          </div>
         </div>
       </header>
 
